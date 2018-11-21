@@ -1,29 +1,16 @@
 import math
 
 def is_prime(n):
+    '''evaluates whether a given number is prime'''
     prime_meter = True
     for number in range(2, n):
         if n % number == 0:
             prime_meter = False
     return prime_meter
 
-def primes_to(n):
-    """ findet alle primzahlen bis n """
-    primes = [2]
-    for i in range(3, n + 1, 2):
-        last_possible = int(math.sqrt(i) + 1)
-        for test in primes:
-            if test > last_possible:
-                primes.append(i)
-                break
-            if i % test == 0:
-                break
-        else:
-            primes.append(i)
-    return primes
 
 def n_primes(n):
-    """ die ersten n primzahlen finden"""
+    '''finds the first n primes'''
     if n < 1:
         return []
     if n == 1:
@@ -46,8 +33,9 @@ def n_primes(n):
         else: 
             primes.append(counter)
 
+
 def primes_to(n):
-    """ findet alle primzahlen bis n """
+    '''finds all primes up to n. see prime_generator(n) for a more efficient solution'''
     primes = [2]
     for i in range(3, n + 1, 2):
         last_possible = int(math.sqrt(i) + 1)
@@ -61,29 +49,37 @@ def primes_to(n):
             primes.append(i)
     return primes
 
-def PrimesTo(n):
-    ''' findet alle primzahlen bis n, generator = effizienter'''
+
+def prime_generator(n):
+    '''finds all primes up to n, more efficient'''
     number = 1
     while number < (n + 1):
         number += 1
         if is_prime(number):
             yield number
 
+
 def prime_factors(n):
+    '''finds all prime factors of a given number n'''
     prime_factors = []
-    prime_numbers = PrimesTo(n)
+    prime_numbers = prime_generator(n)
     max_possible = int(math.sqrt(n) + 1)
+
+    if n < 2: 
+        return []
     
     while n % 2 == 0:
-        prime_factors.append(2)
-        n = n // 2
+       prime_factors.append(2)
+       n = n // 2
 
     for prime in prime_numbers:
         while n % prime == 0:
             prime_factors.append(prime)
             n = n // prime
-    if prime >= max_possible:
-        return prime_factors
+        
+        if n == 1:
+            return prime_factors
+
 
 def prime_factors(max):
     prime_factor_list = []
@@ -100,14 +96,3 @@ def prime_factors(max):
         yield max // number
         if number >= max:
             return prime_factor_list
-
-def factors(n):
-    i = 2
-    factors = []
-    while i <= n:
-        if n % i == 0:
-            factors.append(i)
-        n = n // i 
-    else:
-        i = next(prime) ## nächste primzahl holen
-    return factors
