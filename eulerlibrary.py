@@ -94,24 +94,6 @@ def prime_factors(n):
 b = prime_factors(10000)
 print(b)
 
-
-
-def simple_generator_function():
-    yield 2
-    yield 3
-    yield 5
-    yield 7
-    yield 11
-
-#for value in simple_generator_function():
-#    print(value)
-
-
-
-
-our_generator = simple_generator_function()
-
-
 def prime_factors(max):
     prime_factor_list = []
     max = 128
@@ -127,17 +109,6 @@ def prime_factors(max):
         yield max // number
         if number >= max:
             return prime_factor_list
-
-a = prime_factors(128)
-
-#    if 128 % number == 0:
- #       prime_factor_list.append(number)
-  #      number = 128 // number
-   #     continue
- #   next(our_generator)
-  #  if number >= 128 // 2 + 1:
-   #     break
-#print(prime_factor_list)
 
 def factors(n):
     i = 2
