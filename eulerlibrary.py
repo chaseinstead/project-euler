@@ -69,12 +69,6 @@ def PrimesTo(n):
         if is_prime(number):
             yield number
 
-primz = PrimesTo(128)
-
-# for p in primz:
- #   print(p)
-
-
 def prime_factors(n):
     prime_factors = []
     prime_numbers = PrimesTo(n)
@@ -90,9 +84,6 @@ def prime_factors(n):
             n = n // prime
     if prime >= max_possible:
         return prime_factors
-
-b = prime_factors(10000)
-print(b)
 
 def prime_factors(max):
     prime_factor_list = []
