@@ -32,23 +32,3 @@ for number in primes:
 
 
 print(circular_primes_found)
-
-"""
-def circular_prime_test(rotates):
-
-	for number in rotates:
-
-		number_len = len(number)
-
-		if number_len == 1:
-			newnumbers.append(number)
-		if number_len > 1 < 3:
-			if is_prime(int(number[::-1])):
-				newnumbers.append(number)
-				continue
-
-	return newnumbers
-"""
-
-#c = circular_prime_test(primestrings)
-#print(c)
