@@ -14,32 +14,25 @@ from eulerlibrary import *
 maxnumber = 1000000
 primes = set(primes_to(maxnumber))
 
-def prepare_primes_for_circular_test(primes):
-	primestrings = []
-	for number in primes:
-		primestrings.append(str(number))
-	return primestrings
-
-primestrings = prepare_primes_for_circular_test(primes)
 
 def rotate_number(number):
-	a = number
-	rotates = [int(number)]
-	for i in range(len(a) -1):
-		b = a[1:] + a[0]
-		rotates.append(int(b))
-		a = b
-	return rotates
+	a = str(number)
+	return [a[i:] + a[:i] for i in range(len(a))]
 
-solution_list = []
+
+def is_circular_prime(number):
+	return all([int(x) in primes for x in rotate_number(str(number))])
+
+
+circular_primes_found = 0
 
 for number in primes:
-	rotated_nums = rotate_number(str(number))
+	if is_circular_prime(number):
+		circular_primes_found += 1
 
-	if all([int(x) in primes for x in rotated_nums]): #lieber gucken ob zahl in der prime list ist!
-		solution_list.append(number)
 
-print(len(solution_list))
+print(circular_primes_found)
+
 """
 def circular_prime_test(rotates):
 

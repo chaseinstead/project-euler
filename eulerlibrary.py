@@ -2,11 +2,12 @@ import math
 
 def is_prime(n):
     '''evaluates whether a given number is prime'''
-    prime_meter = True
-    for number in range(2, n):
+    if n % 2 == 0:
+        return False
+    for number in range(3, int(math.sqrt(n)) +1, 2):
         if n % number == 0:
-            prime_meter = False
-    return prime_meter
+            return False
+    return True
 
 
 def n_primes(n):
